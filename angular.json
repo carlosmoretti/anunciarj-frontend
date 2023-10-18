@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -46,6 +48,12 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/env/desenv.ts",
+                  "replaceWith": "src/env/prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -68,6 +76,7 @@
               "browserTarget": "anunciacg:build:production"
             },
             "development": {
+              "proxyConfig": "src/proxy.conf.json",
               "browserTarget": "anunciacg:build:development"
             }
           },
@@ -100,5 +109,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "28c2d218-7de2-42f2-938d-cc1616ed4294"
   }
 }

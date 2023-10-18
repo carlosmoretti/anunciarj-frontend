@@ -1,0 +1,43 @@
+<div class="title">
+    <h2>{{form.titulo}}</h2>
+    <div class="category">{{form.categoria.nome}}</div>
+    <div class="category">Há {{form.distancia | number: '1.0-0'}} km de distância.</div>
+</div>
+<div class="row mt-3 gs-2">
+    <div class="col-sm-4 mb-3">
+        <div class="card whatsapp">
+            <div class="card-body">
+                <div class="contact-type">WhatsApp</div>
+                <div class="contact-value">{{form.whatsapp}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 mb-3">
+        <div class="card instagram">
+            <div class="card-body">
+                <div class="contact-type">Instagram</div>
+                <div class="contact-value">{{form.instagram}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 mb-3">
+        <div class="card facebook">
+            <div class="card-body">
+                <div class="contact-type">Facebook</div>
+                <div class="contact-value">{{form.facebook}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-sm-6 mb-3">
+        <h4>Descrição</h4>
+        <div class="description">
+            {{form.descricao}}
+        </div>
+    </div>
+    <div class="col-sm-6 mb-3">
+        <app-map [x]="form.x" [y]="form.y"></app-map>
+    </div>
+</div>

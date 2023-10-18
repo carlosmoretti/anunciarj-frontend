@@ -1,0 +1,63 @@
+:host {
+    ::ng-deep {
+        app-map {
+            .match-parent {
+                min-height: 400px;
+            }
+        }
+    }
+}
+
+.title {
+    h2 {
+        font-weight: bold;
+    }
+    .category {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+
+.row {
+
+    .description {
+        font-size: 12px;       
+        text-align: justify;
+    }
+
+    &> * {
+
+        .card {
+            cursor: pointer;
+            border: none;
+
+            .card-body {
+                .contact-type {
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+
+                .contact-value {
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+            }
+
+            &.whatsapp {
+                background-color: #2ecc71;
+                color: #FFF;
+            }
+
+            &.instagram {
+                background: radial-gradient(circle at 30% 107%, #fdf497 0%, #dbd484 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+                color: #FFF;
+            }
+
+            &.facebook {
+                background-color: #4267B2;
+                color: #FFF;
+            }
+        }
+    }
+}

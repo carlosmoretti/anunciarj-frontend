@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.xng-breadcrumb-root {
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  .xng-breadcrumb-separator {
+    padding: 0 4px;
+  }
+
+  .xng-breadcrumb-trail {
+    font-weight: 600;
+  }

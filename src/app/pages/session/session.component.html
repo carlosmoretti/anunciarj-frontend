@@ -1,0 +1,21 @@
+<div class="full">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="text-center">
+                    <h1>Ops... </h1>
+                    <h5>Sua sessão ainda não foi iniciada.</h5>
+                </div>
+            </div>
+            <div class="col-sm-6" *ngIf="!isMobile">
+                <div>
+                    <p>Você está acessando a aplicação através de um dispositivo sem GPS, por conta disso sua localização pode não ser precisa. Recomendamos associar sua sessão há um dispositivo móvel. É bem fácil!</p>
+                    <p>Acesse o link abaixo através de um celular:</p>
+                    <p><a href="#">http://localhost:4200/session/registrar/{{token}}</a></p>
+                    <button [routerLink]="['..', 'home']" class="btn btn-primary">Já cliquei</button>
+                    <a class="ms-3" [routerLink]="['..', 'home']">Ignorar e acessar a aplicação.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

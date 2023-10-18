@@ -1,0 +1,21 @@
+.full {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+        word-wrap: break-word;
+    }
+
+    .col-sm-6 {
+        @media (min-width: 900px) {
+            &:first-child {
+                display: flex;
+                align-items: center;
+                border-right: 1px solid #CCC;
+            }
+        }
+    }
+}

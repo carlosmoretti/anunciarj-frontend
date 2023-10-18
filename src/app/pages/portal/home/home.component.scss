@@ -1,0 +1,120 @@
+.card-anuncio {
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    min-height: 130px;
+}
+
+.filter {
+    .fa-xmark {
+        cursor: pointer;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input, select {
+        font-size: 12px;
+    }
+
+    .text-small {
+        font-size: 12px;
+    }
+
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 350px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 999;
+
+    @media (max-width: 800px) {
+        width: 100vw;
+    }
+
+    h5 {
+        position: relative;
+        font-size: 14px;
+        width: fit-content;
+
+        &::after {
+            margin-top: 10px;
+            bottom: -5px;
+            left: 0;
+            width: 80%;
+            height: 2px;
+            position: absolute;
+            background-color: #6ab04c;
+            content: '';
+        }
+    }
+}
+
+.descricao {
+    font-size: 14px;
+}
+
+.card {
+    position: relative;
+    .detail {
+        position: absolute;
+    }
+
+    .detail {
+        text-decoration: none;
+        cursor: pointer;
+        bottom: 0;
+        right: 0;
+        padding: 5px 3rem;
+        background-color: #6ab04c !important;
+        font-size: 14px;
+        color: #FFF;
+        border-radius: 5px 0px 5px 0px;
+    }
+
+    .card-body {
+        .card-category {
+            font-size: 11px
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .card-text {
+            li {
+
+                &.stars {
+                    .value {
+                        * {
+                            color: #f0932b
+                        }
+                    }
+                }
+
+                &:not(:first-child) {
+                    margin-top: 5px;
+                }
+
+                list-style: none;
+
+                .title {
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+
+                .value {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

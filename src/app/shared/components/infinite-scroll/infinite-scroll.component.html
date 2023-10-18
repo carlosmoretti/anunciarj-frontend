@@ -1,0 +1,4 @@
+<ng-container *ngIf="resultados && resultados.length > 0" [ngTemplateOutlet]="content" [ngTemplateOutletContext]="{ resultados: resultados }"></ng-container>
+<div class="d-flex align-items-center justify-content-center" *ngIf="!resultados || resultados.length == 0">
+    Que pena. Não encontramos nada para exibir aqui!
+</div>
