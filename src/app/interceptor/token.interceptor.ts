@@ -14,13 +14,13 @@ export class TokenInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): any {
         const token = this.sessaoService.getSessao();
         debugger;
-        if(token) {
+        if(token && token.x && token.y) {
             req = req.clone({
                 setHeaders: {
-                    sessionId: token
+                    geolocalizacaox: token.x,
+                    geolocalizacaoy: token.y
                 }
             })
-
         }
 
         return next.handle(req);

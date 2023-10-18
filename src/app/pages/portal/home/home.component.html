@@ -46,10 +46,12 @@
 </div>
 
 <div class="row g-3 mb-3">
-    <div class="col-sm-12">
-        <app-map [sessao]="true"></app-map>
+    <a class="link" (click)="alterarEndereco()">Alterar endereço</a>
+    <div class="col-sm-12" *ngIf="localizacaoUsuario">
+        <app-map [x]="localizacaoUsuario.x" [y]="localizacaoUsuario.y"></app-map>
     </div>
 </div>
+
 <app-infinite-scroll [options]="infiniteScrollSettings" *ngIf="infiniteScrollSettings">
     <ng-template #content let-resultados="resultados">
         <div class="row g-2">

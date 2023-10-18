@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SessaoService } from 'src/app/service/sessao/sessao.service';
 import { MobileHelper } from 'src/app/shared/mobile.helper';
 import { environment } from 'src/env/desenv';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { LocalizacaoService } from 'src/app/service/localizacao/localizacao.service';
+import { MapComponent } from 'src/app/shared/components/map/map.component';
 
 @Component({
   selector: 'app-session',
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.scss']
 })
-export class SessionComponent implements OnInit {
+export class SessionComponent {
 
   token: any;
   criando: boolean = false;
   publicKeyToken = environment.captchaPublicKey;
+  geolocalizacao = { x: -22.907920, y: -43.185334 }
+  endereco!: string;
+
+  @ViewChild('map') mapComponent!: MapComponent
 
   constructor(private service: SessaoService,
     private router: Router,
     private recaptchaService: ReCaptchaV3Service,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private localizacaoService:  LocalizacaoService,
+    private cdr: ChangeDetectorRef) {
   }
 
   get isAtualizacaoDeToken() {
@@ -30,47 +38,23 @@ export class SessionComponent implements OnInit {
     return MobileHelper.isMobile();
   }
 
-  atualizarToken() {
-    debugger;
-    const token = this.activatedRoute.snapshot.params['token'];
-    navigator.geolocation.getCurrentPosition((position) => {
-      const x = position.coords.latitude
-      const y = position.coords.longitude
-
-      this.recaptchaService.execute('atualizarSessao')
-        .subscribe((token) => {
-          console.log(token)
-        })
-
-      // this.service.atualizarToken(token, x, y)
-      //   .subscribe((res) => {
-      //     this.redirecionar();
-      //   })
-    })
+  buscarLocalizacao() {
+    this.localizacaoService.get(this.endereco)
+      .subscribe((e: any) => {
+        this.geolocalizacao.x = e.x;
+        this.geolocalizacao.y = e.y
+        this.service.armazenarLocalizacao(this.geolocalizacao.x, this.geolocalizacao.y)
+        this.redirecionar();
+      })
   }
 
-  ngOnInit(): void {
-    this.verificarToken();
-    this.redirecionar();
-    this.criar();
-  }
-
-  verificarToken() {
-    if(this.isAtualizacaoDeToken) {
-      this.atualizarToken();
-      return;
-    }
-  }
-
-  resolveToken(args: any) {
-    console.log(args);
-  }
 
   redirecionar() {
     const token = this.service.getSessao()
 
     if(token)
-      this.router.navigate(['home'])
+      window.location.href = '/home'
+      // this.router.navigate(['home'])
   }
 
   criar() {
@@ -94,22 +78,22 @@ export class SessionComponent implements OnInit {
     //     })
     // });
 
-    this.recaptchaService.execute('atualizarSessao')
-        .subscribe((token) => {
-          this.service.add({ 
-            x: -22.920100,
-            y: -43.081100,
-            token: token
-          }).subscribe((res: any) => {
-              this.service.armazenarSessao(res.token);
+    // this.recaptchaService.execute('atualizarSessao')
+    //     .subscribe((token) => {
+    //       this.service.add({ 
+    //         x: -22.920100,
+    //         y: -43.081100,
+    //         token: token
+    //       }).subscribe((res: any) => {
+    //           this.service.armazenarSessao(res.token);
               
-              if(this.isMobile) {
-                this.redirecionar();
-              } else {
-                this.token = res.token;
-              }
-            })
-        })
+    //           if(this.isMobile) {
+    //             this.redirecionar();
+    //           } else {
+    //             this.token = res.token;
+    //           }
+    //         })
+    //     })
   }
 
 }

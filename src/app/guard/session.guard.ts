@@ -14,10 +14,8 @@ export class SessionGuard implements CanActivate {
     }
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-        const sessionId = this.sessaoService.getSessao();
-        const possuiSessaoAberta = sessionId != null;
 
-        if(!possuiSessaoAberta) {
+        if(!this.sessaoService.isSessaoIniciada()) {
             this.router.navigate(['session'])
             return false;
         }

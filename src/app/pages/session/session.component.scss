@@ -1,21 +1,75 @@
+:host {
+    ::ng-deep {
+        .match-parent {
+            height: 100vh !important;
+        }
+    }
+}
+
 .full {
+    position: relative;
     height: 100vh;
     width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    a {
-        word-wrap: break-word;
-    }
+    .form {
+        position: absolute;
+        top: 7rem;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        z-index: 999;
 
-    .col-sm-6 {
-        @media (min-width: 900px) {
-            &:first-child {
-                display: flex;
-                align-items: center;
-                border-right: 1px solid #CCC;
+        .choice {
+            -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.21);
+            -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.21);
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.21);
+            font-size: 30px;
+            border-style: none;
+            width: 80%;
+            padding: 2rem;
+            background-color: #FFF;
+            border-radius: 15px 0px 0px 15px;
+        }
+
+        button {
+            min-width: 7rem;
+            font-size: 30px;
+            border-radius: 0px 15px 15px 0px;
+            -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.21);
+            -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.21);
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.21);
+        }
+
+        @media (max-width: 800px) {
+            .choice {
+                font-size: 14px;
+            }   
+
+            button {
+                min-width: auto;
             }
         }
     }
 }
+
+// .full {
+//     height: 100vh;
+//     width: 100vw;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+
+//     a {
+//         word-wrap: break-word;
+//     }
+
+//     .col-sm-6 {
+//         @media (min-width: 900px) {
+//             &:first-child {
+//                 display: flex;
+//                 align-items: center;
+//                 border-right: 1px solid #CCC;
+//             }
+//         }
+//     }
+// }

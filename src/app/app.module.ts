@@ -14,6 +14,8 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
 import { RouterModule } from '@angular/router';
 import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 import { environment } from 'src/env/desenv';
+import { SharedModule } from './shared/shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localePt);
 
@@ -29,7 +31,9 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-    RecaptchaV3Module
+    RecaptchaV3Module,
+    SharedModule,
+    FormsModule
   ],
   providers: [
     {

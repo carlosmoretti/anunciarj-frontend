@@ -7,6 +7,7 @@ import { CategoriaService } from 'src/app/service/categoria/categoria.service';
 import { Observable } from 'rxjs';
 import { BaseComponent } from 'src/app/shared/components/base.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SessaoService } from 'src/app/service/sessao/sessao.service';
 
 @Component({
   selector: 'app-home',
@@ -39,12 +40,19 @@ export class HomeComponent extends BaseComponent implements OnInit, AfterViewIni
   @ViewChild(InfiniteScrollComponent) infiniteScroll!: InfiniteScrollComponent;
 
   categorias$!: Observable<any>
+  localizacaoUsuario: any;
 
   constructor(private service: AnuncioService,
+    private sessaoService: SessaoService,
     private categoriaService: CategoriaService,
     router: Router,
     activatedRoute: ActivatedRoute) {
       super(router, activatedRoute)
+  }
+
+  alterarEndereco() {
+    this.sessaoService.limparLocalizacao();
+    window.location.reload()
   }
   
   ngAfterViewInit(): void {
@@ -59,6 +67,7 @@ export class HomeComponent extends BaseComponent implements OnInit, AfterViewIni
 
   ngOnInit(): void {
     this.categorias$ = this.categoriaService.get();
+    this.localizacaoUsuario = this.sessaoService.getSessao()
     this.readFilter((filter) => {
       this.formFilter = filter;
     });
@@ -95,9 +104,7 @@ export class HomeComponent extends BaseComponent implements OnInit, AfterViewIni
   montarEstrelas(estrelas: number) {
     let arr = []
     for(let i = 0; i < estrelas; i++)
-      arr.push('fa-solid fa-star');
-
-    debugger;
+      arr.push('fa-solid fa-star')
 
     for(let i = 0; i <= 5 - arr.length; i++)
       arr.push('fa-regular fa-star')
