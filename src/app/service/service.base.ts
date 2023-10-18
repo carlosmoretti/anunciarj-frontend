@@ -41,6 +41,6 @@ export abstract class ServiceBase {
     }
 
     protected montarUrl() {
-        return '/api/' + this.url
+        return 'api/' + this.url
     }
 }
