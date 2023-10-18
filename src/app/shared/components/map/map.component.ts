@@ -27,6 +27,7 @@ export class MapComponent implements OnInit {
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
         zoom: 14,
+        attributionControl: false,
         center: this.sessao ? [e.y, e.x] : [this.y, this.x]
       });
 
