@@ -4,7 +4,7 @@ WORKDIR /dist/src/app
 RUN npm cache clean --force
 COPY . .
 RUN npm install
-RUN npm run build --prod
+RUN npm run build --configuration production
 
 
 ### STAGE 2:RUN ###
