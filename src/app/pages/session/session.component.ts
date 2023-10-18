@@ -74,12 +74,31 @@ export class SessionComponent implements OnInit {
   }
 
   criar() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.recaptchaService.execute('atualizarSessao')
+    // Ajustar para SSL
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   this.recaptchaService.execute('atualizarSessao')
+    //     .subscribe((token) => {
+    //       this.service.add({ 
+    //         x: position.coords.latitude,
+    //         y: position.coords.longitude,
+    //         token: token
+    //       }).subscribe((res: any) => {
+    //           this.service.armazenarSessao(res.token);
+              
+    //           if(this.isMobile) {
+    //             this.redirecionar();
+    //           } else {
+    //             this.token = res.token;
+    //           }
+    //         })
+    //     })
+    // });
+
+    this.recaptchaService.execute('atualizarSessao')
         .subscribe((token) => {
           this.service.add({ 
-            x: position.coords.latitude,
-            y: position.coords.longitude,
+            x: -22.920100,
+            y: -43.081100,
             token: token
           }).subscribe((res: any) => {
               this.service.armazenarSessao(res.token);
@@ -91,7 +110,6 @@ export class SessionComponent implements OnInit {
               }
             })
         })
-    });
   }
 
 }
