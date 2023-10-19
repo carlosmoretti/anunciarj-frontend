@@ -70,6 +70,9 @@ export class HomeComponent extends BaseComponent implements OnInit, AfterViewIni
     this.localizacaoUsuario = this.sessaoService.getSessao()
     this.readFilter((filter) => {
       this.formFilter = filter;
+      
+      if(!filter.distancia)
+        this.formFilter.distancia = 60;
     });
   }
 
